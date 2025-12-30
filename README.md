@@ -9,6 +9,7 @@ A simple in-memory todo console application built with Python 3.13+.
 - **Update Task** - Modify task title and/or description
 - **Delete Task** - Remove tasks by ID
 - **Mark Complete** - Toggle task completion status
+- **Colorful Interface** - Enhanced UX with ANSI colors and emojis
 
 ## Setup
 
@@ -41,19 +42,19 @@ python main.py
 
 ## Usage
 
-When you run the application, you'll see a menu:
+When you run the application, you'll see a colorful menu with emojis:
 
 ```
 ========================================
-      TODO CONSOLE APP v1.0
+    📝 TODO CONSOLE APP
 ========================================
 
-  1. Add Task
-  2. View Tasks
-  3. Update Task
-  4. Delete Task
-  5. Mark Complete
-  6. Exit
+  1. ➕ Add Task
+  2. 📋 View Tasks
+  3. ✏️  Update Task
+  4. 🗑️  Delete Task
+  5. ✅ Mark Complete
+  6. 🚪 Exit
 
 ----------------------------------------
 Enter your choice (1-6):
@@ -64,36 +65,36 @@ Enter your choice (1-6):
 ```
 Enter your choice (1-6): 1
 
-Add Task
+➕ Add Task
 --------------------
 Enter title: Buy groceries
 Enter description (optional): Milk, eggs, bread
-Task added successfully! (ID: 1)
+✅ Task added successfully! (ID: 1)
 
 Enter your choice (1-6): 2
 
-Your Tasks
+📋 Your Tasks
 --------------------
-[ ] 1. Buy groceries
+[⬜] 1. Buy groceries
     Milk, eggs, bread
 
 Enter your choice (1-6): 5
 
-Mark Complete
+✅ Mark Complete
 --------------------
 Enter task ID to mark complete: 1
-Task 1 is now complete.
+✅ Task 1 is now complete.
 
 Enter your choice (1-6): 2
 
-Your Tasks
+📋 Your Tasks
 --------------------
-[X] 1. Buy groceries
+[✅] 1. Buy groceries
     Milk, eggs, bread
 
 Enter your choice (1-6): 6
 
-Goodbye!
+Goodbye! Thanks for using Todo Console App 👋
 ```
 
 ## Project Structure
