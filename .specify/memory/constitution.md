@@ -1,55 +1,96 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Todo Console App Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Spec-Driven Development
+All code must originate from approved specifications. Every feature must be defined in specifications before implementation. Each change must produce a new spec entry in the specs history folder.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Simplicity and Clarity
+Code should be accessible for beginner-to-intermediate Python developers. Prioritize readability over clever optimizations. Clear, descriptive naming for all variables, functions, and classes.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Correctness of Business Logic
+Task lifecycle must behave predictably. Edge cases must be handled gracefully. No hidden state or surprising side effects.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Maintainability
+Clean, readable, modular Python code. Functions and classes must have clear, single responsibilities. No duplicate logic across functions. No hard-coded magic values without explanation.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Deterministic Behavior
+No hidden state beyond in-memory data structures. Same inputs always produce same outputs. No external side effects.
 
-### [PRINCIPLE_6_NAME]
+## Functional Requirements
 
+The application must support five core features:
 
-[PRINCIPLE__DESCRIPTION]
+1. **Add Task** – Create a task with unique ID, title, description, and default incomplete status
+2. **Delete Task** – Remove a task using its unique ID
+3. **Update Task** – Modify title and/or description of an existing task
+4. **View Task List** – Display all tasks with ID, title, description, and completion status
+5. **Mark as Complete** – Toggle task completion state (complete/incomplete)
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Technical Constraints
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- **Language**: Python 3.13+
+- **Environment**: UV-managed virtual environment
+- **Architecture**: Console-based application only
+- **Storage**: In-memory data structures (list or dictionary)
+- **Dependencies**: Standard library only (no third-party runtime dependencies)
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Code Standards
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### PEP 8 Compliance
+All Python code must follow PEP 8 conventions.
+
+### Separation of Concerns
+- Clear separation between user input, business logic, and output formatting
+- Graceful handling of invalid user input
+
+### No Magic Values
+All magic values must be explained with constants or comments.
+
+## Project Structure
+
+```
+todo-console-app/
+├── .specify/
+│   ├── memory/
+│   │   └── constitution.md    (this file)
+│   ├── templates/
+│   └── scripts/
+├── src/
+│   └── (Python source code)
+├── specs/
+│   └── (spec evolution files)
+├── history/
+│   ├── prompts/
+│   └── adr/
+├── README.md
+└── CLAUDE.md
+```
+
+## Documentation Standards
+
+### README.md
+Must include:
+- Project overview
+- Setup instructions using UV
+- How to run the console app
+- Example usage flow
+
+### CLAUDE.md
+Must clearly define:
+- How Claude Code should generate specs
+- How implementations must follow specs strictly
+
+## Success Criteria
+
+- All five basic-level features work correctly via console interaction
+- Application runs without errors in a fresh UV environment
+- Specifications fully describe the implemented behavior
+- Code passes manual review for cleanliness and readability
+- Project structure exactly matches defined deliverables
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other development practices. Amendments require documentation and approval.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-30 | **Last Amended**: 2025-12-30
