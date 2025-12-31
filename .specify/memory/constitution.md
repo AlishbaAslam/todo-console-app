@@ -1,4 +1,17 @@
-# Todo Console App Constitution
+<!--
+Sync Impact Report:
+Version change: 1.0.0 → 1.1.0
+Rationale: Added scope governance for Intermediate and Advanced levels and formalized evolution constraints.
+Modified principles: Simplicity and Clarity (updated to allow for incremental complexity), Maintainability (added focus on extensible data models).
+Added sections: Project Scope Governance (Basic, Intermediate, Advanced), Evolution Constraints.
+Templates requiring updates:
+- .specify/templates/spec-template.md: ✅ Updated
+- .specify/templates/plan-template.md: ✅ Updated
+- .specify/templates/tasks-template.md: ✅ Updated
+Follow-up TODOs: None.
+-->
+
+# The Evolution of Todo – Constitution
 
 ## Core Principles
 
@@ -6,91 +19,74 @@
 All code must originate from approved specifications. Every feature must be defined in specifications before implementation. Each change must produce a new spec entry in the specs history folder.
 
 ### II. Simplicity and Clarity
-Code should be accessible for beginner-to-intermediate Python developers. Prioritize readability over clever optimizations. Clear, descriptive naming for all variables, functions, and classes.
+Maintain clarity and simplicity for a CLI-based user experience. Code should be accessible for beginner-to-intermediate Python developers. Prioritize readability over clever optimizations. Clear, descriptive naming for all variables, functions, and classes is mandatory.
 
-### III. Correctness of Business Logic
-Task lifecycle must behave predictably. Edge cases must be handled gracefully. No hidden state or surprising side effects.
+### III. Incremental Evolution
+The project follows a tiered evolution path (Basic → Intermediate → Advanced). Each phase must preserve backward compatibility with completed phases. New complexity is introduced only when explicitly defined in higher-tier specifications.
 
-### IV. Maintainability
-Clean, readable, modular Python code. Functions and classes must have clear, single responsibilities. No duplicate logic across functions. No hard-coded magic values without explanation.
+### IV. Correctness and Predictability
+Task lifecycle must behave predictably. Edge cases must be handled gracefully. Input validation and predictable CLI behavior are mandatory. No hidden state or surprising side effects.
 
-### V. Deterministic Behavior
-No hidden state beyond in-memory data structures. Same inputs always produce same outputs. No external side effects.
+### V. Maintainability and Extensibility
+Clean, readable, modular Python code following PEP-8. Functions and classes must have clear, single responsibilities. The task data model must remain extensible for future phases. No duplicate logic across functions. No hard-coded magic values without explanation.
 
-## Functional Requirements
+### VI. AI-Assisted Development
+The project leverages Claude Code as a development assistant. All AI-generated code must be human-verified for correctness against the current specification and constitution principles.
 
-The application must support five core features:
+## Project Scope Governance
 
-1. **Add Task** – Create a task with unique ID, title, description, and default incomplete status
-2. **Delete Task** – Remove a task using its unique ID
-3. **Update Task** – Modify title and/or description of an existing task
-4. **View Task List** – Display all tasks with ID, title, description, and completion status
-5. **Mark as Complete** – Toggle task completion state (complete/incomplete)
+### Basic Level (Phase-I)
+- **Status**: Completed and Frozen.
+- **Scope**:
+    - In-memory task storage only.
+    - Core CRUD functionality (Add, View, Update, Delete).
+    - Task completion toggling.
 
-## Technical Constraints
+### Intermediate Level (Phase-II)
+- **Scope**:
+    - Task organization (priorities, tags/categories).
+    - Search, filter, and sort capabilities.
+    - Usability improvements without persistence.
+
+### Advanced Level (Phase-III)
+- **Scope**:
+    - Recurring task logic.
+    - Due dates and time-based reminders.
+    - Intelligent task rescheduling.
+    - No external databases unless explicitly specified.
+
+## Technical Standards
 
 - **Language**: Python 3.13+
-- **Environment**: UV-managed virtual environment
-- **Architecture**: Console-based application only
-- **Storage**: In-memory data structures (list or dictionary)
-- **Dependencies**: Standard library only (no third-party runtime dependencies)
+- **Dependency Management**: UV
+- **Spec Framework**: Spec-Kit Plus (SDD)
+- **Assistant**: Claude Code
+- **Execution Environment**: Terminal / Console
 
-## Code Standards
+## Constraints
 
-### PEP 8 Compliance
-All Python code must follow PEP 8 conventions.
+- **Persistence**: No data persistence beyond runtime unless explicitly introduced in later phases.
+- **Interface**: Console application only (no UI frameworks for current phases).
+- **Process**: No feature implementation without a corresponding specification.
+- **Compatibility**: No breaking changes to completed phase functionality.
 
-### Separation of Concerns
-- Clear separation between user input, business logic, and output formatting
-- Graceful handling of invalid user input
+## Deliverable Standards
 
-### No Magic Values
-All magic values must be explained with constants or comments.
-
-## Project Structure
-
-```
-todo-console-app/
-├── .specify/
-│   ├── memory/
-│   │   └── constitution.md    (this file)
-│   ├── templates/
-│   └── scripts/
-├── src/
-│   └── (Python source code)
-├── specs/
-│   └── (spec evolution files)
-├── history/
-│   ├── prompts/
-│   └── adr/
-├── README.md
-└── CLAUDE.md
-```
-
-## Documentation Standards
-
-### README.md
-Must include:
-- Project overview
-- Setup instructions using UV
-- How to run the console app
-- Example usage flow
-
-### CLAUDE.md
-Must clearly define:
-- How Claude Code should generate specs
-- How implementations must follow specs strictly
+The repository must contain:
+- **Constitution**: Updated governance and principles.
+- **Specifications**: `specs/` containing active specs and `specs/history/` containing all versions.
+- **Source Code**: `/src` directory with modular Python source.
+- **Documentation**: `README.md` (setup/usage) and `CLAUDE.md` (agent rules).
 
 ## Success Criteria
 
-- All five basic-level features work correctly via console interaction
-- Application runs without errors in a fresh UV environment
-- Specifications fully describe the implemented behavior
-- Code passes manual review for cleanliness and readability
-- Project structure exactly matches defined deliverables
+- All Basic, Intermediate, and Advanced requirements are traceable to approved specifications.
+- Console application behaves deterministically and predictably across all modes.
+- Codebase remains clean, readable, and extensible through all evolution phases.
+- Project demonstrates a disciplined, spec-driven development workflow.
 
 ## Governance
 
-This constitution supersedes all other development practices. Amendments require documentation and approval.
+This constitution is the supreme authority for the project's development. Amendments require a version bump and explicit documentation in the PHR record.
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-30 | **Last Amended**: 2025-12-30
+**Version**: 1.1.0 | **Ratified**: 2025-12-30 | **Last Amended**: 2025-12-31
